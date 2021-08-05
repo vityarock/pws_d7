@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block extra_title %}проект библиотеки - издатели{% endblock extra_title %}
+
+{% block content %}
+{% for pub in publishers %}
+<ul class="list-group list-group-flush font-weight-bold">
+    <li class="list-group-item"> {{ pub.pub_name }}
+        <ul class="list-group list-group-flush font-weight-normal">
+        {% for book in pub.book_set.all %}
+            <li class="list-group-item"> {{ book.title }}</li>
+        {% endfor %}
+        </ul>
+    </li>
+</ul>
+{% endfor %}
+{% endblock %}

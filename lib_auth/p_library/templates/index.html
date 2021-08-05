@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block extra_title %}проект библиотеки - таблица{% endblock extra_title %}
+
+{% block content%}
+    {% load static %}
+
+    <table class="table" border="1">
+        <thead class="thead-light">
+            <tr>
+            <th scope="row">№</th>
+            <th>Название</th>
+            <th>Обложка</th>
+            <th>ISBN</th>
+            <th>описание</th>
+            <th>год издания</th>
+            <th>автор</th>
+            <th>страна</th>
+            <th>сейчас читают</th>
+            </tr>
+        </thead>
+        {% for book in books %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ book.title }}</td>
+            <td>{% if book.cover %}
+            <img src="{{ book.cover.url }}"
+                alt="{{ "image" }}"
+                width="150" height="auto">
+            {% endif %}</td>
+            <td>{{ book.ISBN }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.year_release }}</td>
+            <td>{{ book.author.full_name }}</td>
+            <td>{{ book.author.country }}</td>
+            <td>{%if book.reader %}
+                {{ book.reader }}
+                {% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block extra_title %}проект библиотеки - читатели{% endblock extra_title %}
+{% block content%}
+
+
+
+
+{% for reader in readers %}
+<ul class="list-group list-group-flush font-weight-bold">
+    <li class="list-group-item"> {{ reader.name }}
+        <ul class="list-group list-group-flush font-weight-normal">
+        {% for book in reader.get_book.all %}
+            <li class="list-group-item"> {{ book.title }}</li>
+        {% endfor %}
+        </ul>
+    </li>
+</ul>
+{% endfor %}
+{% endblock %}
