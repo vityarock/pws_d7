@@ -1,6 +1,7 @@
 from django.urls import path
-from all_auth.views import index
+from all_auth.views import login_page
+
 
 urlpatterns = [
-    path('', index),
+    path('', login_page),
 ]
